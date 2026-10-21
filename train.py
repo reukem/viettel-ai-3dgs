@@ -11,6 +11,8 @@
 
 import os
 import torch
+import lpips
+import torch.nn.functional as F
 from random import randint
 from utils.loss_utils import l1_loss, ssim
 from gaussian_renderer import render, network_gui
@@ -70,6 +72,9 @@ def training(dataset, opt, pipe, testing_iterations, saving_iterations, checkpoi
 
     progress_bar = tqdm(range(first_iter, opt.iterations), desc="Training progress")
     first_iter += 1
+    
+    loss_fn_vgg = lpips.LPIPS(net='vgg').cuda()
+    
     for iteration in range(first_iter, opt.iterations + 1):
         if network_gui.conn == None:
             network_gui.try_connect()
@@ -124,6 +129,26 @@ def training(dataset, opt, pipe, testing_iterations, saving_iterations, checkpoi
             ssim_value = ssim(image, gt_image)
 
         loss = (1.0 - opt.lambda_dssim) * Ll1 + opt.lambda_dssim * (1.0 - ssim_value)
+        
+        # Kích hoạt LPIPS sau khoảng 5,000 bước để hình học định hình trước
+        if iteration > 5000:
+            h, w = image.shape[1], image.shape[2]
+            patch_size = 512
+            if h > patch_size and w > patch_size:
+                x = torch.randint(0, w - patch_size, (1,)).item()
+                y = torch.randint(0, h - patch_size, (1,)).item()
+                img_patch = image[:, y:y+patch_size, x:x+patch_size].unsqueeze(0)
+                gt_patch = gt_image[:, y:y+patch_size, x:x+patch_size].unsqueeze(0)
+            else:
+                img_patch = image.unsqueeze(0)
+                gt_patch = gt_image.unsqueeze(0)
+
+            # LPIPS yêu cầu dải màu [-1, 1]
+            img_lpips = img_patch * 2.0 - 1.0
+            gt_lpips = gt_patch * 2.0 - 1.0
+            
+            loss_lpips = loss_fn_vgg(img_lpips, gt_lpips).mean()
+            loss = loss + 0.05 * loss_lpips
 
         # Depth regularization
         Ll1depth_pure = 0.0

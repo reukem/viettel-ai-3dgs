@@ -41,7 +41,8 @@ def loadCam(args, id, cam_info, resolution_scale, is_nerf_synthetic, is_test_dat
         
     orig_w, orig_h = image.size
     if args.resolution in [1, 2, 4, 8]:
-        resolution = round(orig_w/(resolution_scale * args.resolution)), round(orig_h/(resolution_scale * args.resolution))
+        scale = float(resolution_scale * args.resolution)
+        resolution = round(orig_w/scale), round(orig_h/scale)
     else:  # should be a type that converts to float
         if args.resolution == -1:
             if orig_w > 1600:
@@ -60,16 +61,23 @@ def loadCam(args, id, cam_info, resolution_scale, is_nerf_synthetic, is_test_dat
         scale = float(global_down) * float(resolution_scale)
         resolution = (int(orig_w / scale), int(orig_h / scale))
 
+    cx = cam_info.cx / scale if getattr(cam_info, 'cx', None) is not None else None
+    cy = cam_info.cy / scale if getattr(cam_info, 'cy', None) is not None else None
+
     return Camera(resolution, colmap_id=cam_info.uid, R=cam_info.R, T=cam_info.T, 
                   FoVx=cam_info.FovX, FoVy=cam_info.FovY, depth_params=cam_info.depth_params,
                   image=image, invdepthmap=invdepthmap,
                   image_name=cam_info.image_name, uid=id, data_device=args.data_device,
-                  train_test_exp=args.train_test_exp, is_test_dataset=is_test_dataset, is_test_view=cam_info.is_test)
+                  train_test_exp=args.train_test_exp, is_test_dataset=is_test_dataset, is_test_view=cam_info.is_test,
+                  cx=cx, cy=cy)
 
 def cameraList_from_camInfos(cam_infos, resolution_scale, args, is_nerf_synthetic, is_test_dataset):
     camera_list = []
+    import os
 
     for id, c in enumerate(cam_infos):
+        if not os.path.exists(c.image_path):
+            continue
         camera_list.append(loadCam(args, id, c, resolution_scale, is_nerf_synthetic, is_test_dataset))
 
     return camera_list
@@ -80,7 +88,11 @@ def camera_to_JSON(id, camera : Camera):
     Rt[:3, 3] = camera.T
     Rt[3, 3] = 1.0
 
-    W2C = np.linalg.inv(Rt)
+    import torch
+    Rt_tensor = torch.tensor(Rt, dtype=torch.float32)
+    W2C_tensor = torch.inverse(Rt_tensor)
+    W2C = W2C_tensor.numpy()
+    
     pos = W2C[:3, 3]
     rot = W2C[:3, :3]
     serializable_array_2d = [x.tolist() for x in rot]

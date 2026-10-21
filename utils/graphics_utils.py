@@ -41,14 +41,31 @@ def getWorld2View2(R, t, translate=np.array([.0, .0, .0]), scale=1.0):
     Rt[:3, 3] = t
     Rt[3, 3] = 1.0
 
-    C2W = np.linalg.inv(Rt)
-    cam_center = C2W[:3, 3]
+    # Avoid np.linalg.inv due to DLL conflicts with pandas/pytorch on Windows
+    Rt_tensor = torch.tensor(Rt, dtype=torch.float32)
+    C2W_tensor = torch.inverse(Rt_tensor)
+    
+    cam_center = C2W_tensor[:3, 3].numpy()
     cam_center = (cam_center + translate) * scale
-    C2W[:3, 3] = cam_center
-    Rt = np.linalg.inv(C2W)
+    C2W_tensor[:3, 3] = torch.tensor(cam_center, dtype=torch.float32)
+    
+    Rt = torch.inverse(C2W_tensor).numpy()
     return np.float32(Rt)
 
-def getProjectionMatrix(znear, zfar, fovX, fovY):
+def getProjectionMatrixCenterShift(znear, zfar, cx, cy, flx, fly, w, h):
+    P = torch.zeros(4, 4)
+    z_sign = 1.0
+    P[0, 0] = 2.0 * flx / w
+    P[1, 1] = 2.0 * fly / h
+    # Bù trừ độ lệch tâm (Shift) chuẩn OpenGL
+    P[0, 2] = (2.0 * cx - w) / w
+    P[1, 2] = (2.0 * cy - h) / h
+    P[3, 2] = z_sign
+    P[2, 2] = z_sign * zfar / (zfar - znear)
+    P[2, 3] = -(zfar * znear) / (zfar - znear)
+    return P
+
+def getProjectionMatrix(znear, zfar, fovX, fovY, cx=None, cy=None, W=None, H=None):
     tanHalfFovY = math.tan((fovY / 2))
     tanHalfFovX = math.tan((fovX / 2))
 
@@ -63,8 +80,19 @@ def getProjectionMatrix(znear, zfar, fovX, fovY):
 
     P[0, 0] = 2.0 * znear / (right - left)
     P[1, 1] = 2.0 * znear / (top - bottom)
-    P[0, 2] = (right + left) / (right - left)
-    P[1, 2] = (top + bottom) / (top - bottom)
+    
+    # --- BẢN VÁ LỆCH TÂM (PRINCIPAL POINT OFFSET) CỦA LUCY ---
+    if cx is not None and W is not None:
+        P[0, 2] = (2.0 * cx / W) - 1.0
+    else:
+        P[0, 2] = (right + left) / (right - left)
+        
+    if cy is not None and H is not None:
+        P[1, 2] = (2.0 * cy / H) - 1.0
+    else:
+        P[1, 2] = (top + bottom) / (top - bottom)
+    # --------------------------------------------------------
+
     P[3, 2] = z_sign
     P[2, 2] = z_sign * zfar / (zfar - znear)
     P[2, 3] = -(zfar * znear) / (zfar - znear)

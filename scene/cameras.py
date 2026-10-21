@@ -15,12 +15,14 @@ import numpy as np
 from utils.graphics_utils import getWorld2View2, getProjectionMatrix
 from utils.general_utils import PILtoTorch
 import cv2
+import math
 
 class Camera(nn.Module):
     def __init__(self, resolution, colmap_id, R, T, FoVx, FoVy, depth_params, image, invdepthmap,
                  image_name, uid,
                  trans=np.array([0.0, 0.0, 0.0]), scale=1.0, data_device = "cuda",
-                 train_test_exp = False, is_test_dataset = False, is_test_view = False
+                 train_test_exp = False, is_test_dataset = False, is_test_view = False,
+                 cx=None, cy=None
                  ):
         super(Camera, self).__init__()
 
@@ -84,7 +86,17 @@ class Camera(nn.Module):
         self.scale = scale
 
         self.world_view_transform = torch.tensor(getWorld2View2(R, T, trans, scale)).transpose(0, 1).cuda()
-        self.projection_matrix = getProjectionMatrix(znear=self.znear, zfar=self.zfar, fovX=self.FoVx, fovY=self.FoVy).transpose(0,1).cuda()
+        
+        self.cx = cx if cx is not None else self.image_width / 2.0
+        self.cy = cy if cy is not None else self.image_height / 2.0
+        self.fx = self.image_width / (2.0 * math.tan(self.FoVx / 2.0))
+        self.fy = self.image_height / (2.0 * math.tan(self.FoVy / 2.0))
+
+        from utils.graphics_utils import getProjectionMatrixCenterShift
+        self.projection_matrix = getProjectionMatrixCenterShift(
+            self.znear, self.zfar, self.cx, self.cy, self.fx, self.fy, 
+            self.image_width, self.image_height
+        ).transpose(0, 1).cuda()
         self.full_proj_transform = (self.world_view_transform.unsqueeze(0).bmm(self.projection_matrix.unsqueeze(0))).squeeze(0)
         self.camera_center = self.world_view_transform.inverse()[3, :3]
         
