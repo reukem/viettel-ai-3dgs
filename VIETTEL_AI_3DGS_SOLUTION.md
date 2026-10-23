@@ -76,4 +76,24 @@ python run_pipeline.py
 | **Submission** | Manual frame collation | Fully automated `submission.zip` |
 
 ---
-*Viettel AI Race 2026 — Track 1 Solution Archive*
+
+## 🏆 5. Official Leaderboard Score & Hardware Benchmark
+
+### Official Competition Score:
+- **Official Score**: **`62.3367`** (+8.5096 improvement over baseline `53.8271`)
+- **Leaderboard Rank**: **`#148 / 186`** national teams
+- **Peak PSNR**: **`21.574633 dB`**
+- **SSIM**: **`67.5929%`** (`0.675929`)
+- **LPIPS**: **`27.2148%`** (`0.272148`)
+- **Scenes Evaluated**: **`7 / 7` (100% matched)** (`bonsai`, `chair`, `HCM0421`, `HCM0539`, `HCM0540`, `HCM0644`, `HCM0674`)
+- **Submission File**: `submission.zip` (76.8 MB / 80,517,855 bytes, Hash prefix `4ed806124c7e`)
+- **Grading Time**: `23/07/2026, 07:18:01` (Evaluated in 9 seconds)
+
+### Hardware Execution (Local Edge Deployment):
+- **Machine**: ASUS TUF Gaming F15 (2024) | Intel Core i7-13620H | NVIDIA GeForce RTX 4060 Laptop GPU (8GB VRAM) | 16GB DDR5
+- **Marathon Training**: **14 hours 56 minutes 04 seconds non-stop** (22/07/2026 16:00:00 to 23/07/2026 06:56:22)
+- **Total Training Steps**: **150,000 iterations** across 5 BTS sites (30,000 iters/scene)
+- **Synthesis Volume**: **1,500+ novel view test frames** rendered with 0 CUDA OOMs and 0 crashes.
+
+---
+*Viettel AI Race 2026 — Track 1 Solution Archive | Authored by Ngô Minh Thiên Bảo (reukem)*

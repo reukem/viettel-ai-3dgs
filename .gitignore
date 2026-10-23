@@ -20,6 +20,8 @@ submission/
 *.tar.gz
 *.log
 *.txt
+test_import.py
+test_wrapper.py
 !README.md
 !results.md
 !LICENSE.md
