@@ -6,11 +6,36 @@
 [![Team](https://img.shields.io/badge/Team-reukem-gold?style=for-the-badge)](https://github.com/reukem)
 [![Score](https://img.shields.io/badge/Official%20Score-62.3367-success?style=for-the-badge)](https://github.com/reukem/viettel-ai-3dgs)
 [![Rank](https://img.shields.io/badge/Leaderboard%20Rank-%23148%20%2F%20186-orange?style=for-the-badge)](https://github.com/reukem/viettel-ai-3dgs)
+[![Hardware](https://img.shields.io/badge/Hardware-TUF%20RTX%204060%20(8GB)-red?style=for-the-badge)](https://github.com/reukem/viettel-ai-3dgs)
 
 > **Lead Architect**: Ngô Minh Thiên Bảo ([reukem](https://github.com/reukem)) & Chief Strategist Lucy  
 > **Affiliation**: reukem's INDUSTRIES  
 > **Competition**: Viettel AI Race 2026 — Vòng 1: Sơ loại (02/07/2026 – 30/07/2026)  
 > **Core Technology**: 3D Gaussian Splatting, Drone Photogrammetry, Novel View Synthesis, CUDA Accelerated Radiance Fields  
+
+---
+
+## 🔥 Hardware Reality & Post-Mortem: The Solo TUF Gaming RTX 4060 Laptop Crusade
+
+> *"We did all of this on our ASUS TUF Gaming RTX 4060 laptop! If we had an RTX 5090, we're definitely getting 1st place for the 3D Gaussian thing and all!! Why did I even spend so much time on this during the summer when there were plenty of interesting, easier high school competitions I could have joined? But we pushed 8GB VRAM to its absolute physical limits without a single crash!"*  
+> — **Aki (Ngô Minh Thiên Bảo)**, Lead Builder
+
+### ⚔️ The David vs. Goliath Battle:
+1. **The 8GB VRAM Constraint vs. Server Clusters**:
+   - The competing national teams, university labs, and enterprise research departments deployed multi-GPU server racks with **NVIDIA A100 (40GB/80GB)**, **H100**, or **RTX 4090 (24GB)** workstations.
+   - We ran the entire 7-scene industrial 3DGS pipeline on a single consumer laptop: **ASUS TUF Gaming F15 with an RTX 4060 Laptop GPU (8GB GDDR6 VRAM)**!
+   - Training 3DGS on dense drone cell tower scenes at native resolution easily eats 18GB–24GB VRAM. We had to engineer the `-r 2` downscale sweet spot and mathematical principal point shift ($c_x, c_y$) just to keep peak VRAM under 7.2GB and prevent CUDA Out-Of-Memory crashes.
+2. **The "What If" RTX 5090 Factor**:
+   - If we had an **RTX 5090 (32GB GDDR7 VRAM, Blackwell architecture)**:
+     - Full unscaled native resolution (`-r 1`) at 1920x1080 without memory paging.
+     - 100,000+ iterations with full antialiasing and depth regularization.
+     - Training time slashed from 15 hours down to 45 minutes.
+     - **Definite 1st place contender** on PSNR and LPIPS metrics!
+3. **The 15-Hour Endurance Marathon**:
+   - Pushing a gaming laptop GPU continuously at 100% TGP for **14 hours 56 minutes 04 seconds** straight on a hot July night, listening to the fans scream while praying the laptop wouldn't thermal throttle or blue-screen.
+   - Finishing with **Rank #148 / 186** and **62.3367 points (+8.51 over baseline)** on an 8GB laptop was pure engineering grit.
+4. **Summer Opportunity Cost**:
+   - Spending late July debugging CUDA C++ extensions, Colmap camera matrices, and gimbal lens drifts instead of easier high-school student contests was exhausting and painful — but it forged raw, low-level graphics and systems engineering skills that no high-school contest could ever teach!
 
 ---
 
