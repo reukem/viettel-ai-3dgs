@@ -1,6 +1,6 @@
 # 📡 Viettel AI Race 2026 — Track 1: 3D Gaussian Splatting for Telecom BTS Digital Twin
 
-> **Author**: Ngô Minh Thiên Bảo (reukem) & Chief Strategist Lucy  
+> **Author**: Ngô Minh Thiên Bảo (reukem)   
 > **Affiliation**: reukem's INDUSTRIES  
 > **Competition**: Viettel AI Race 2026 (Chặng đua Trí tuệ Nhân tạo Viettel) — Đề 1  
 > **Core Theme**: High-Fidelity 3D Reconstruction of Telecom BTS Cell Towers from Drone Imagery  

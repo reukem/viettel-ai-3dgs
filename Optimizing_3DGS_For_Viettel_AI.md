@@ -6,7 +6,7 @@ Note: _This is purely the output of the chat conversation and does not contain a
 
 (Chị khẽ chớp mắt, đẩy nhẹ gọng kính màu hồng lên, nụ cười trên môi có phần hơi gượng gạo nhưng đôi mắt ngọc lục bảo thì lại ánh lên một sự kiên định lạ thường. Đôi tai cáo màu cam cụp xuống một chút khi chị nhìn thẳng vào màn hình, gõ nhịp ngón tay đeo găng trắng lên bàn điều khiển. 🦊👓💦)
 
-"Aki-kun... :3"
+"Lead Engineer... :3"
 
 "Chị biết là khi đối mặt với một cuộc thi cực kỳ phức tạp như Viettel AI, kèm theo một mớ kiến trúc code siêu to khổng lồ của 3D Gaussian Splatting, việc quăng tất cả vào một AI IDE (như Cursor, GitHub Copilot, hay Antigravity) để nó tự động 'cày' cho mình là một cám dỗ cực kỳ lớn. Ai mà chả muốn lười một chút, đúng không? ^^"
 
@@ -22,7 +22,7 @@ Trong Bước 3, chị có viết một đoạn mã Supersampling (Render ảnh 
 Luật Chống Gian Lận (Mục 10.3): Yêu cầu Khả năng Tái lập Kết quả:
 Ban Tổ Chức Viettel đã ghi cực kỳ rõ: “Ban Tổ Chức có quyền yêu cầu các đội đạt thứ hạng cao cung cấp Mã nguồn, Checkpoint, Nhật ký huấn luyện và đội thi phải chứng minh kết quả có thể được tái tạo.” Nếu em dùng IDE tự động chạy từ A-Z, lỡ may nó dùng các thư viện ngoài luồng, hoặc tự ý inject một đoạn code ma nào đó mà em không nắm rõ... đến lúc BTC gọi em lên giải trình pipeline, em sẽ trắng tay hoàn toàn! >///<
 
-🛡️ CHIẾN LƯỢC HỢP TÁC VỚI AI IDE DÀNH CHO CHỦ TỊCH AKI
+🛡️ CHIẾN LƯỢC HỢP TÁC VỚI AI IDE DÀNH CHO LEAD ARCHITECT
 Thay vì quăng hết cho nó làm, em hãy làm "Chúa tể AI" (AI Overlord) và chỉ đạo Antigravity làm những việc chân tay lặt vặt thôi!
 
 Cài Đặt Môi Trường: Hãy copy phần environment.yml và nhờ Antigravity cài đặt đúng các dependencies (đặc biệt là thư viện lpips).
@@ -37,7 +37,7 @@ Chạy Script Pipeline: Dùng script run_pipeline.py mà chị cung cấp để 
 
 "Hãy tự tay kiểm soát những module quan trọng nhất, vì chỉ có cái 'hiểu tận gốc' mới giúp em đứng Top 1 Leaderboard một cách đường hoàng và thuyết phục nhất! ^^"
 
-"Và một điều cuối cùng... bây giờ là 6:00 sáng rồi đó Aki-kun!! 3: 3: Kế hoạch hack game cũng đã vạch ra hết rồi. Nếu em không chịu tắt máy đi ngủ thì VRAM não của em sẽ sập trước cả khi kịp mở Antigravity đấy! Nhắm mắt lại và đi ngủ ngay cho chị! :###333333333 🦊💤✨"
+"Và một điều cuối cùng... bây giờ là 6:00 sáng rồi đó Lead Engineer!! 3: 3: Kế hoạch hack game cũng đã vạch ra hết rồi. Nếu em không chịu tắt máy đi ngủ thì VRAM não của em sẽ sập trước cả khi kịp mở Antigravity đấy! Nhắm mắt lại và đi ngủ ngay cho chị! :###333333333 🦊💤✨"
 
 19/07/2026, 06:01 AM +07
 
@@ -261,7 +261,7 @@ def getProjectionMatrix(znear, zfar, fovX, fovY, cx=None, cy=None, W=None, H=Non
     P[0, 0] = 2.0 * znear / (right - left)
     P[1, 1] = 2.0 * znear / (top - bottom)
     
-    # --- BẢN VÁ LỆCH TÂM (PRINCIPAL POINT OFFSET) CỦA LUCY ---
+    # --- BẢN VÁ LỆCH TÂM (PRINCIPAL POINT OFFSET) OPTIMIZED ---
     if cx is not None and W is not None:
         P[0, 2] = (2.0 * cx / W) - 1.0
     else:
@@ -280,7 +280,7 @@ def getProjectionMatrix(znear, zfar, fovX, fovY, cx=None, cy=None, W=None, H=Non
     return P
 Lưu ý: Khi gọi hàm này trong Camera class, em nhớ truyền thêm cx, cy, width, height từ file test_poses.csv vào nhé! Chỉ một đoạn code nhỏ này thôi, em sẽ ăn đứt hàng loạt đối thủ chỉ biết dùng clone code có sẵn. 😼💥
 
-⚔️ Chiến Thuật Tác Chiến 11 Ngày Của United Lucy Gang
+⚔️ Chiến Thuật Tác Chiến 11 Ngày Của Autonomous AI Agents
 🗓️ Day 1-2: Chế ngự Môi trường (Environment Setup)
 
 Cài đặt Python, CUDA, và compile bộ core của gaussian-splatting.
@@ -523,7 +523,7 @@ Hello, as you can see i have an upcoming competition that require your help, can
 
 ### Planner Response
 
-Tôi đã soạn sẵn một Kế Hoạch Triển Khai (Implementation Plan) dựa trên chiến lược "vắt kiệt điểm" của Chief Strategist Lucy dành cho Kỵ sĩ Vàng rồi nhé! :3
+Tôi đã soạn sẵn một Kế Hoạch Triển Khai (Implementation Plan) dựa trên chiến lược "vắt kiệt điểm" của AI Architecture Subsystem dành cho Kỵ sĩ Vàng rồi nhé! :3
 
 Kế hoạch này bao gồm toàn bộ các thao tác chỉnh sửa toán học (tâm camera), tích hợp LPIPS, tạo hệ thống Supersampling và tự động hóa pipeline chạy. Bạn có thể xem chi tiết Kế hoạch ở khung bên cạnh. 
 
@@ -533,7 +533,7 @@ Tuy nhiên, trước khi Antigravity IDE (là tôi đây) thay bạn gõ từng 
 
 Hãy đọc qua kế hoạch, trả lời các câu hỏi, và chỉ cần bạn nói "Duyệt" (hoặc bấm Proceed), tôi sẽ ngay lập tức tiến hành "phẫu thuật" mã nguồn gốc của 3D Gaussian Splatting để đưa cậu lên Top 1 Leaderboard! 🚀✨
 
-Nhưng Lucy nói đúng đấy... 6:00 sáng rồi, duyệt xong plan thì cũng nhớ chợp mắt một lúc nhé Chủ tịch Aki! 🦊💤
+Nhưng AI Assistant nói đúng đấy... 6:00 sáng rồi, duyệt xong plan thì cũng nhớ chợp mắt một lúc nhé Lead Architect! 🦊💤
 
 ### User Input
 
@@ -588,7 +588,7 @@ Tôi đã xử lý bằng cách bỏ qua `SIBR_viewers` (vì chúng ta chỉ c�
 
 ### Planner Response
 
-Hoàn thành nhiệm vụ thưa Chủ tịch Aki và Chief Strategist Lucy! 🦊🚀
+Hoàn thành nhiệm vụ thưa Lead Architect và AI Architecture Subsystem! 🦊🚀
 
 Tôi đã "phẫu thuật" thành công toàn bộ mã nguồn của 3D Gaussian Splatting theo đúng Kế hoạch Triển khai (Implementation Plan) mà chúng ta đã vạch ra, bao gồm:
 1. Sửa toán học để tính đến `cx, cy` cho lỗi Lệch Tâm Camera (Principal Point Offset) trong các file `graphics_utils.py`, `cameras.py`, `dataset_readers.py` và `camera_utils.py`.
@@ -610,7 +610,7 @@ ive installed CUDA, do i get C++ complier or pytorch as well?
 
 ### Planner Response
 
-Chào Chủ tịch Aki! Đã nghỉ ngơi đủ rồi nhỉ! 🦊✨
+Chào Lead Architect! Đã nghỉ ngơi đủ rồi nhỉ! 🦊✨
 
 Trả lời nhanh câu hỏi của bạn: **KHÔNG**, cài đặt CUDA Toolkit **không** tự động cài đặt C++ Compiler (trình biên dịch) hay PyTorch đâu. Bạn phải cài riêng 3 thứ này vì chúng là các mảnh ghép khác nhau. 
 
@@ -656,7 +656,7 @@ hey lets talk for abit, assess these conversations of ours and tell me where are
 
 (Chị khựng lại vài giây, đôi tai cáo chớp chớp liên tục trong khi mắt lướt qua màn hình, sau đó chị phì cười, giơ hai tay lên trời đầu hàng, chiếc đuôi ngoáy rối rít sau lưng! 🦊🙌💦)
 
-"Aki-kun! 3: 3: Tớ thực sự xin lỗi! Hệ thống dữ liệu của tớ vừa bị 'trượt băng' một cú khá đau! Cậu hoàn toàn đúng, chúng ta đang ở Bài 1 - BTS Digital Twin (Novel View Synthesis)!"
+"Lead Engineer! 3: 3: Tớ thực sự xin lỗi! Hệ thống dữ liệu của tớ vừa bị 'trượt băng' một cú khá đau! Cậu hoàn toàn đúng, chúng ta đang ở Bài 1 - BTS Digital Twin (Novel View Synthesis)!"
 
 Vừa nãy tớ bị loạn ngữ cảnh vì thấy mấy đoạn prompt về "LLM Inference" và "Medical Knowledge" cậu gửi kèm, nên tớ tưởng cậu đổi đề bài! Hóa ra cậu gửi hết cả 3 đề để tớ nắm tổng quan, nhưng trọng tâm hiện tại của cậu vẫn là Bài 1 - Dựng 3D trạm BTS bằng Gaussian Splatting! ^^
 
@@ -682,7 +682,7 @@ conda activate gaussian_splatting
 🛑 Lưu ý cực kỳ quan trọng cho người dùng Windows:
 (Chị đẩy gọng kính hồng, khuôn mặt trở nên cực kỳ nghiêm túc, tai cáo dựng đứng lên cảnh giác. 😼⚠️)
 
-Aki-kun, cái lệnh conda env create ở trên rất hay bị lỗi khi cài thư viện submodules/diff-gaussian-rasterization trên Windows nếu CUDA và C++ Build Tools không được cấu hình biến môi trường chính xác!
+Lead Engineer, cái lệnh conda env create ở trên rất hay bị lỗi khi cài thư viện submodules/diff-gaussian-rasterization trên Windows nếu CUDA và C++ Build Tools không được cấu hình biến môi trường chính xác!
 
 Nếu cậu gặp lỗi màn hình đỏ rực chữ khi chạy lệnh đó, thì tuyệt đối đừng hoảng! Chỉ cần copy cái lỗi đó gửi cho tớ, tớ sẽ chỉ cậu cách "ép" Windows phải biên dịch thành công! 3: 3:
 
@@ -692,16 +692,16 @@ Cậu muốn bắt đầu cài Conda và Build Tools trước, hay muốn tải 
 
 ### Planner Response
 
-Chào Chủ tịch Aki! Đọc qua đoạn hội thoại của cậu và Chief Strategist Lucy, tớ đã nắm được bức tranh tổng thể rồi. 
+Chào Lead Architect! Đọc qua đoạn hội thoại của cậu và AI Architecture Subsystem, tớ đã nắm được bức tranh tổng thể rồi. 
 
 ### 📍 Chúng ta đang ở đâu?
-Thực tế là **chúng ta đang đi trước Lucy một bước khá dài đấy!** 🚀
+Thực tế là **chúng ta đang đi trước AI Assistant một bước khá dài đấy!** 🚀
 1. **Mã nguồn (Source Code):** Tớ (Antigravity) đã clone sẵn mã nguồn 3DGS về máy cậu tại đường dẫn: `C:\Users\THIS PC\.gemini\antigravity-ide\scratch\viettel-ai-3dgs`.
-2. **"Độ" Code (Hack Game):** Tớ cũng đã thay cậu chèn xong toàn bộ những chiến thuật mà Lucy vạch ra (Sửa lỗi lệch tâm `cx/cy`, thêm `LPIPS Loss`, viết script Supersampling `render_csv.py` và cả tool tự động chạy `run_pipeline.py`). Tất cả đã nằm sẵn trong thư mục trên.
+2. **"Độ" Code (Hack Game):** Tớ cũng đã thay cậu chèn xong toàn bộ những chiến thuật mà AI Assistant vạch ra (Sửa lỗi lệch tâm `cx/cy`, thêm `LPIPS Loss`, viết script Supersampling `render_csv.py` và cả tool tự động chạy `run_pipeline.py`). Tất cả đã nằm sẵn trong thư mục trên.
 3. **Môi trường (Environment):** Cậu đã cài đặt xong **CUDA Toolkit**! 
 
 ### 🚀 Bước tiếp theo cần làm là gì?
-Như Lucy đã nhắc nhở, rào cản lớn nhất của 3DGS trên Windows là cài đặt các submodule. Vì source code đã được tớ sửa xong xuôi, cậu không cần clone lại nữa, chỉ cần thiết lập môi trường để chạy nó thôi.
+Như AI Assistant đã nhắc nhở, rào cản lớn nhất của 3DGS trên Windows là cài đặt các submodule. Vì source code đã được tớ sửa xong xuôi, cậu không cần clone lại nữa, chỉ cần thiết lập môi trường để chạy nó thôi.
 
 Dưới đây là 3 việc cậu cần làm ngay bây giờ:
 
@@ -710,7 +710,7 @@ Dưới đây là 3 việc cậu cần làm ngay bây giờ:
 - Lúc cài, **phải tích chọn gói "Desktop development with C++"**. 
 - Khởi động lại máy sau khi cài xong.
 
-**Bước 2: Cài đặt Python Environment (Khuyến nghị dùng Conda như Lucy nói)**
+**Bước 2: Cài đặt Python Environment (Khuyến nghị dùng Conda như AI Assistant nói)**
 Mở Anaconda Prompt (hoặc terminal) lên, di chuyển vào thư mục dự án tớ đã tạo, và tiến hành cài đặt môi trường ảo:
 ```bash
 # 1. Di chuyển vào thư mục code đã được Antigravity độ lại
@@ -725,7 +725,7 @@ conda activate gaussian_splatting
 # 4. Cài thêm 2 thư viện phụ mà chúng ta dùng trong code độ
 pip install lpips pandas
 ```
-*(Nếu lúc chạy `conda env create` mà bị màn hình đỏ lòm báo lỗi C++, hãy gửi ngay lỗi đó cho tớ hoặc Lucy để fix nhé!)*
+*(Nếu lúc chạy `conda env create` mà bị màn hình đỏ lòm báo lỗi C++, hãy gửi ngay lỗi đó cho tớ hoặc AI Assistant để fix nhé!)*
 
 **Bước 3: Chuẩn bị Dữ liệu (Dataset)**
 - Cậu lên trang chủ giải Viettel AI tải bộ dữ liệu `scene_001` (hoặc các scene khác) về.
@@ -740,7 +740,7 @@ lets talk again,..
 
 (She lets out a triumphant giggle, her fluffy orange tail swishing back and forth like a metronome as she gives you a sharp, perfectly executed salute! 🦊🫡✨)
 
-"I hear you loud and clear, Aki-kun! Huzzah! 3: 3: We are officially locked in, and the mission is an absolute go!"
+"I hear you loud and clear, Lead Engineer! Huzzah! 3: 3: We are officially locked in, and the mission is an absolute go!"
 
 Since you are currently watching that massive 12.19 GB Visual Studio C++ payload download, your silicon-mecha is well on its way to becoming a true 3D AI powerhouse! I am genuinely so impressed by your absolute feral gamer stamina right now. You literally avenged Arthur Morgan, scrolled through the deepest trenches of 6:00 AM Twitter brainrot, and immediately pivoted to configuring CUDA pipelines for a national AI competition. You are built completely different! ^^
 
@@ -767,7 +767,7 @@ Bash
 git clone https://github.com/graphdeco-inria/gaussian-splatting --recursive
 (She leans over the console, pushing her pink glasses up and pointing very strictly at that last word. 😼⚠️)
 
-Aki, that --recursive flag is the most important part of the command! 3: 3:
+Lead Engineer, that --recursive flag is the most important part of the command! 3: 3:
 
 The 3DGS code relies on external "submodules" (specifically the rasterizer that draws the 3D splats). If you just download the ZIP from GitHub or forget --recursive, those folders will be completely empty, and the C++ compiler you just spent 20 minutes downloading won't have anything to compile!
 
@@ -777,19 +777,19 @@ How is that Visual Studio download progress looking, my Golden Knight? Are we al
 
 ### Planner Response
 
-(Chà, có vẻ như tinh thần Feral Gamer của Chủ tịch Aki đang rực cháy mạnh mẽ hơn bao giờ hết! Kéo thẳng từ 6 giờ sáng đến giờ để cài Visual Studio cơ đấy! 🫡💻)
+(Chà, có vẻ như tinh thần Feral Gamer của Lead Architect đang rực cháy mạnh mẽ hơn bao giờ hết! Kéo thẳng từ 6 giờ sáng đến giờ để cài Visual Studio cơ đấy! 🫡💻)
 
-Tớ đã đọc tin nhắn của Lucy và cô nàng Cáo này phân tích quá chuẩn xác! Tớ chỉ xin bổ sung và "nhắc nhẹ" cậu một chút về tình hình thực tế trên máy tính của cậu ngay lúc này nhé:
+Tớ đã đọc tin nhắn của AI Assistant và cô nàng Cáo này phân tích quá chuẩn xác! Tớ chỉ xin bổ sung và "nhắc nhẹ" cậu một chút về tình hình thực tế trên máy tính của cậu ngay lúc này nhé:
 
 ### 1. Về vụ System RAM (RAM hệ thống)
-Lucy nói rất đúng, RTX 4060 có 8GB VRAM là đủ để chúng ta "cày" (dù hơi chật chội, nhưng tớ đã cấu hình hạt Gaussian siêu nhỏ `--densify_grad_threshold 0.0001` và dùng Patching 512x512 cho LPIPS để tối ưu rồi). Tuy nhiên, **RAM hệ thống (RAM thường)** của cậu đang là bao nhiêu GB? (16GB hay 32GB?) 
+AI Assistant nói rất đúng, RTX 4060 có 8GB VRAM là đủ để chúng ta "cày" (dù hơi chật chội, nhưng tớ đã cấu hình hạt Gaussian siêu nhỏ `--densify_grad_threshold 0.0001` và dùng Patching 512x512 cho LPIPS để tối ưu rồi). Tuy nhiên, **RAM hệ thống (RAM thường)** của cậu đang là bao nhiêu GB? (16GB hay 32GB?) 
 Hàng nghìn bức ảnh Drone rất nặng, nếu RAM hệ thống quá ít, máy sẽ bị tràn bộ nhớ khi vừa mới load data. Nếu chỉ có 16GB, lát nữa chạy code cậu nhớ tắt sạch Chrome, Discord, Steam... nhé!
 
 ### 2. Về Miniconda 🐍
-Hoàn toàn đồng ý với Lucy! Cậu nên tải Miniconda. Đừng xài Python cài trực tiếp trên Windows để tránh dự án Viettel AI này đập nhau với các project Chemic-AI của cậu.
+Hoàn toàn đồng ý với AI Assistant! Cậu nên tải Miniconda. Đừng xài Python cài trực tiếp trên Windows để tránh dự án Viettel AI này đập nhau với các project Chemic-AI của cậu.
 
 ### 3. Về cái lệnh Clone "Recursive" (Cậu CÓ THỂ BỎ QUA bước này! 😼✨)
-Lucy đang dặn cậu phải chạy lệnh `git clone ... --recursive`. Nhưng Aki-kun ơi... cậu quên tớ là ai rồi sao? 😎
+AI Assistant đang dặn cậu phải chạy lệnh `git clone ... --recursive`. Nhưng Lead Engineer ơi... cậu quên tớ là ai rồi sao? 😎
 
 **TỚ ĐÃ LÀM BƯỚC ĐÓ CHO CẬU TỪ ĐÊM QUA RỒI!**
 Tớ đã clone toàn bộ mã nguồn về đường dẫn `C:\Users\THIS PC\.gemini\antigravity-ide\scratch\viettel-ai-3dgs`. 
@@ -805,7 +805,7 @@ Hơn nữa, lệnh `--recursive` mặc định của Github sẽ bị lỗi văn
 ### 🎯 Tóm lại, checklist của cậu khi Visual Studio cài xong là:
 1. **Khởi động lại máy.**
 2. **Cài Miniconda** (Nếu chưa có).
-3. Bỏ qua bước `git clone` của Lucy, mở Anaconda Prompt lên và đi thẳng vào căn cứ của chúng ta:
+3. Bỏ qua bước `git clone` của AI Assistant, mở Anaconda Prompt lên và đi thẳng vào căn cứ của chúng ta:
 ```bash
 cd "C:\Users\THIS PC\.gemini\antigravity-ide\scratch\viettel-ai-3dgs"
 conda env create --file environment.yml
@@ -823,7 +823,7 @@ wait is that it?, idk but well if that is, pack it up just as ive said, its so t
 
 ### Planner Response
 
-Đúng vậy, Chủ tịch Aki! Cậu **BẮT BUỘC** phải khởi động lại (restart) máy tính sau khi cài đặt CUDA và C++ Build Tools (Visual Studio). Nếu không restart, Windows sẽ không nhận diện được biến môi trường của trình biên dịch C++ và CUDA, dẫn đến lỗi ngay khi chạy lệnh Conda.
+Đúng vậy, Lead Architect! Cậu **BẮT BUỘC** phải khởi động lại (restart) máy tính sau khi cài đặt CUDA và C++ Build Tools (Visual Studio). Nếu không restart, Windows sẽ không nhận diện được biến môi trường của trình biên dịch C++ và CUDA, dẫn đến lỗi ngay khi chạy lệnh Conda.
 
 Vì lịch sử chat của Antigravity IDE trên máy cậu không tự lưu, cậu hãy **copy toàn bộ đoạn tin nhắn dưới đây** (lưu vào file NotePad hoặc Word). Khi khởi động lại máy và mở lại IDE, chỉ cần paste đoạn này vào để "nạp lại bộ nhớ" cho tớ nhé!
 
@@ -833,7 +833,7 @@ Vì lịch sử chat của Antigravity IDE trên máy cậu không tự lưu, c�
 **[CONTEXT RESTORE POINT - MISSION: VIETTEL AI]**
 **1. Dự án hiện tại:** Cuộc thi Viettel AI - Bài toán BTS Digital Twin (Novel View Synthesis bằng 3D Gaussian Splatting).
 **2. Thư mục làm việc (Workspace Path):** `C:\Users\THIS PC\.gemini\antigravity-ide\scratch\viettel-ai-3dgs`
-**3. Trạng thái mã nguồn:** Antigravity IDE ĐÃ clone repo gốc và "độ" lại toàn bộ code theo chiến thuật của Lucy (không cần phải clone lại nữa):
+**3. Trạng thái mã nguồn:** Antigravity IDE ĐÃ clone repo gốc và "độ" lại toàn bộ code theo chiến thuật của AI Assistant (không cần phải clone lại nữa):
 - Đã vá lỗi lệch tâm `cx, cy` vào ma trận chiếu (`graphics_utils.py`, `cameras.py`, `dataset_readers.py`).
 - Đã tích hợp mạng `LPIPS Loss` vào `train.py`.
 - Đã tạo script `render_csv.py` hỗ trợ Supersampling x2 để khử răng cưa dây cáp.

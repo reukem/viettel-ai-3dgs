@@ -8,7 +8,7 @@
 [![Rank](https://img.shields.io/badge/Leaderboard%20Rank-%23148%20%2F%20186-orange?style=for-the-badge)](https://github.com/reukem/viettel-ai-3dgs)
 [![Hardware](https://img.shields.io/badge/Hardware-TUF%20RTX%204060%20(8GB)-red?style=for-the-badge)](https://github.com/reukem/viettel-ai-3dgs)
 
-> **Lead Architect**: Ngô Minh Thiên Bảo ([reukem](https://github.com/reukem)) & Chief Strategist Lucy  
+> **Lead Architect**: Ngô Minh Thiên Bảo ([reukem](https://github.com/reukem))   
 > **Affiliation**: reukem's INDUSTRIES  
 > **Competition**: Viettel AI Race 2026 — Vòng 1: Sơ loại (02/07/2026 – 30/07/2026)  
 > **Core Technology**: 3D Gaussian Splatting, Drone Photogrammetry, Novel View Synthesis, CUDA Accelerated Radiance Fields  
@@ -18,7 +18,7 @@
 ## 🔥 Hardware Reality & Post-Mortem: The Solo TUF Gaming RTX 4060 Laptop Crusade
 
 > *"We did all of this on our ASUS TUF Gaming RTX 4060 laptop! If we had an RTX 5090, we're definitely getting 1st place for the 3D Gaussian thing and all!! Why did I even spend so much time on this during the summer when there were plenty of interesting, easier high school competitions I could have joined? But we pushed 8GB VRAM to its absolute physical limits without a single crash!"*  
-> — **Aki (Ngô Minh Thiên Bảo)**, Lead Builder
+> — **Ngô Minh Thiên Bảo (reukem)**, Lead Builder
 
 ### ⚔️ The David vs. Goliath Battle:
 1. **The 8GB VRAM Constraint vs. Server Clusters**:
